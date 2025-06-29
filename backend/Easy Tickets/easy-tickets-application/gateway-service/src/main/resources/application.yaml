@@ -1,0 +1,44 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: API-GATEWAY
+  main:
+    web-application-type: reactive
+  cloud:
+    gateway:
+      routes:
+      - id: EVENT-SERVICE
+        uri: lb://EVENT-SERVICE
+        predicates:
+        - Path=/api/events/**
+        filters:
+        - StripPrefix=1
+
+# Eureka Configuration
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8080/eureka/
+  instance:
+    hostname: api-gateway
+    prefer-ip-address: true
+
+# Actuator endpoints for debugging
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    gateway:
+      enabled: true
+
+# Logging
+logging:
+  level:
+    org.springframework.cloud.gateway: DEBUG
+    reactor.netty: DEBUG
+    org.springframework.web.reactive: DEBUG

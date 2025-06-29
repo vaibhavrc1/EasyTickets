@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>4.0.0-SNAPSHOT</version>
+        <version>3.2.5</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.easytickets</groupId>
@@ -15,8 +15,8 @@
     <name>easy-tickets-application</name>
     <description>Demo Parent project for Spring Boot Microservice</description>
     <properties>
-        <java.version>24</java.version>
-        <spring-cloud.version>2024.0.1</spring-cloud.version>
+        <java.version>17</java.version>
+        <spring-cloud.version>2023.0.0</spring-cloud.version>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -30,10 +30,6 @@
         </dependencies>
     </dependencyManagement>
     <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
-        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -62,6 +58,8 @@
         </dependency>
     </dependencies>
     <modules>
+        <module>discovery-server</module>
+        <module>gateway-service</module>
         <module>event-service</module>
     </modules>
 
