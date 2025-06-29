@@ -1,0 +1,12 @@
+eureka:
+  instance:
+    hostname: discovery-server
+    prefer-ip-address: true
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://${EUREKA_INSTANCE_HOSTNAME:localhost}:${server.port}/eureka/
+
+server:
+  port: 8761
