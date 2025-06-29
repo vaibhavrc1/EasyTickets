@@ -1,11 +1,9 @@
-version: '3.8'
-
 services:
   # Eureka Discovery Server
   discovery-server:
     build:
-      context: .
-      dockerfile: discovery-server/Dockerfile
+      context: ./discovery-server
+      dockerfile: Dockerfile
     container_name: discovery-server
     hostname: discovery-server
     ports:
@@ -22,8 +20,8 @@ services:
   # API Gateway
   api-gateway:
     build:
-      context: .
-      dockerfile: gateway-service/Dockerfile
+      context: ./gateway-service
+      dockerfile: Dockerfile
     container_name: api-gateway
     ports:
       - "8081:8081"
@@ -39,8 +37,8 @@ services:
   # Event Service
   event-service:
     build:
-      context: .
-      dockerfile: event-service/Dockerfile
+      context: ./event-service
+      dockerfile: Dockerfile
     container_name: event-service
     ports:
       - "8082:8082"
@@ -53,7 +51,7 @@ services:
       - SPRING_PROFILES_ACTIVE=docker
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://discovery-server:8761/eureka/
       - SPRING_DATASOURCE_URL=jdbc:oracle:thin:@oracle-db:1521/freepdb1
-      - SPRING_DATASOURCE_USERNAME=event_service
+      - SPRING_DATASOURCE_USERNAME=EVENT_SERVICE
       - SPRING_DATASOURCE_PASSWORD=root
     restart: unless-stopped
 
@@ -62,7 +60,6 @@ services:
     image: gvenzl/oracle-xe:21-slim
     container_name: oracle-db
     environment:
-      - ORACLE_PASSWORD=root
       - ORACLE_DATABASE=freepdb1
       - APP_USER=event_service
       - APP_USER_PASSWORD=root
