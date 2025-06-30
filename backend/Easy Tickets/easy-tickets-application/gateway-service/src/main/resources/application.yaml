@@ -14,6 +14,12 @@ spring:
         - Path=/api/events/**
         filters:
         - StripPrefix=1
+      - id: USER-SERVICE
+        uri: lb://USER-SERVICE
+        predicates:
+        - Path=/api/users/**
+        filters:
+        - StripPrefix=1
 
 # Eureka Configuration
 eureka:

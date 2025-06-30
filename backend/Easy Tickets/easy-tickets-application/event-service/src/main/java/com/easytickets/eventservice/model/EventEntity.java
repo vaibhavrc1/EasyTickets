@@ -10,7 +10,7 @@ public class EventEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "event_id_seq_gen")
-    @SequenceGenerator(name = "event_id_seq_gen", sequenceName = "event_id_seq", allocationSize = 1)
+    @SequenceGenerator(name = "event_id_seq_gen", sequenceName = "EVENT_ID_SEQ", allocationSize = 1)
     private Long id;
 
     private String name;

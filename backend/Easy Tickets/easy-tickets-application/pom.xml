@@ -12,7 +12,7 @@
     <artifactId>easytickets</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
-    <name>easy-tickets-application</name>
+    <name>Easy Tickets</name>
     <description>Demo Parent project for Spring Boot Microservice</description>
     <properties>
         <java.version>17</java.version>
@@ -61,6 +61,7 @@
         <module>discovery-server</module>
         <module>gateway-service</module>
         <module>event-service</module>
+        <module>user-service</module>
     </modules>
 
     <build>
